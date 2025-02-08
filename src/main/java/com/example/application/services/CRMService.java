@@ -9,6 +9,7 @@ import com.vaadin.hilla.BrowserCallable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.system.i18n.CustomI18NProvider;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 
@@ -22,9 +23,12 @@ public class CRMService {
     private final CompanyRepository companyRepository;
     private final ContactRepository contactRepository;
 
-    public CRMService(CompanyRepository companyRepository, ContactRepository contactRepository) {
+    private final CustomI18NProvider customI18NProvider;
+
+    public CRMService(CompanyRepository companyRepository, ContactRepository contactRepository, CustomI18NProvider customI18NProvider) {
         this.companyRepository = companyRepository;
         this.contactRepository = contactRepository;
+        this.customI18NProvider = customI18NProvider;
     }
 
     public record ContactRecord(
